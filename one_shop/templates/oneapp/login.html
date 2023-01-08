@@ -1,0 +1,68 @@
+{% extends 'oneapp/base.html' %}
+{% load static %}
+
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+
+{% if messages %}
+
+    {% for msg in messages %}
+        <p {% if msg.tags %} class="p-3 alert-{{msg.tags}}"{% endif %}>{{msg}}</p>
+    {% endfor %}
+
+{% endif %}
+
+<body style="background-color: #e9e9ef;">
+
+    <div class="container">
+
+        <div class="container p-5 card m-5 shadow">
+
+            <div class="row">
+
+                <div class="col-5">
+
+                    <img src="{% static 'images/2_login_background.jpg' %}" class="rounded" alt="No Image"
+                        height="550px">
+
+                </div>
+
+                <div class="col-7 mt-5">
+
+                    <div class="text-center m-4 text-primary">
+                        <h2 style="font-family:cursive ;"> Login Here </h2>
+                    </div>
+
+                    <form action="{% url 'log_in' %}" method="post">
+
+                        {% csrf_token %}
+
+                        {% for fm in form %}
+                        <div class="mb-3">
+                            {{fm.label}} : {{fm}}
+                            <p class="text-danger">{{fm.errors|striptags}}</p>
+                        </div>
+                        
+                        {% endfor %}
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary ">Login</button>
+                            <span class="ms-4"><a href="{% url 'register' %}" class="">Register</a></span>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>  
+
+        </div>
+
+
+    </div>
+
+</body>
+
+{% endblock body %}

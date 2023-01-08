@@ -1,0 +1,85 @@
+{% extends 'oneapp/base.html' %}
+
+
+
+{% block css %}
+<style>
+    h2 {
+        margin: 30px;
+        font-family: cursive;
+        text-shadow: 1px 2px 2px;
+        text-decoration: underline;
+
+
+    }
+
+    h3,
+    h4 {
+        margin-bottom: 20px;
+        font-family: cursive;
+        text-shadow: 2px 1px 3px;
+
+    }
+
+    h5 {
+        font-family: cursive;
+        font-weight: lighter;
+    }
+</style>
+{% endblock css %}
+
+
+
+{% block body %}
+
+<body style="background-color: #e9e9ef;">
+
+    <div class="container mb-5">
+
+        <div class="row">
+
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8">
+
+                <div class="card shadow m-5 ">
+                    <img class="m-2 rounded mx-auto d-block" src="{{data.p_image.url}}" class="card-img-top"
+                        alt="No Image" width="200px" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{data.p_name}}</h4>
+                        <div class="m-4">
+                            <p class="card-text ">{{data.p_desc}}</p>
+                        </div>
+                        <div class="m-2">
+                            <h5 class="lead" style="display:inline-block ;">Brand : </h5>
+                            <p class="d-inline"> {{data.p_brand}}</p>
+                        </div>
+                        <div class="m-2">
+                            <h5 class="lead" style="display:inline-block ;">Price : </h5>
+                            <p class="d-inline"> {{data.p_price}}</p>
+                        </div>
+                        {% if data.p_category != Watches %}
+                        <div class="m-2">
+                            <h5 class="lead" style="display:inline-block ;">Sizes : </h5>
+                            <p class="d-inline"> </p>
+                        </div>
+                        {% endif %}
+
+                        <p class="text-center"><a href="#" class="btn btn-success" class="d-block">Buy Now</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-2">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+{% endblock body %}

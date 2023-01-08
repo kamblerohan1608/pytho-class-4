@@ -1,0 +1,176 @@
+{% extends 'oneapp/base.html' %} {% block css %}
+<style>
+  h2 {
+    margin: 30px;
+    font-family: cursive;
+    text-shadow: 1px 2px 2px;
+    text-decoration: underline;
+  }
+
+  h3,
+  h4,
+  h5 {
+    margin-bottom: 20px;
+    font-family: cursive;
+    text-shadow: 2px 1px 3px;
+  }
+
+  .card {
+    background-color: #e9e9ef;
+    border-style: none;
+  }
+</style>
+{% endblock css %} {% block body %} {% if messages %} {% for msg in messages %}
+<p {% if msg.tags %} class="p-3 alert-{{msg.tags}}" {% endif %}>{{msg}}</p>
+{% endfor %} {% endif %}
+
+<body style="background-color: #e9e9ef">
+  <div class="container mb-5">
+    <!-- heading -->
+    <div class="container">
+      <h2 class="text-center" style="text-shadow: 2px 1px 3px">
+        Welcome To The One Shop
+      </h2>
+    </div>
+
+    <div class="container">
+      <h3>Checkout Product Categories</h3>
+    </div>
+
+    {% if men_data %}
+
+    <div class="cointainer">
+      <!-- mens_category display -->
+      <div id="men_collection" class="pt-5">
+          <h3> Men's Colection</h3>
+        <div class="row">
+          {% for d in men_data %}
+          <div class="col-3">
+            <div class="card p-3" style="width: 18rem">
+              <a href="{% url 'display_products' d.product_catagory %}"
+                ><img
+                  src="{{d.catagory_image.url}}"
+                  class="card-img-top rounded-circle"
+                  alt="No Image"
+                  height="300px"
+              /></a>
+              <div class="card-body">
+                <a
+                  href="{% url 'display_products' d.product_catagory %}"
+                  class="text-decoration-none text-dark"
+                >
+                  <h4 class="card-text text-center">{{d.product_catagory}}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- womens category display -->
+
+      {% if women_data %}
+      
+      <div id="women_collection" class="pt-5">
+        <h3> Women's Colection</h3>
+
+        <div class="row" id="womens_collection">
+          {% for d in women_data %}
+          <div class="col-3">
+            <div class="card p-3" style="width: 18rem">
+              <a href="{% url 'display_products' d.product_catagory %}"
+                ><img
+                  src="{{d.catagory_image.url}}"
+                  class="card-img-top rounded-circle"
+                  alt="No Image"
+                  height="300px"
+              /></a>
+              <div class="card-body">
+                <a
+                  href="{% url 'display_products' d.product_catagory %}"
+                  class="text-decoration-none text-dark"
+                >
+                  <h4 class="card-text text-center">{{d.product_catagory}}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- kids category display -->
+
+      {% if kids_data %}
+      <div id="kids_collection" class="pt-5">
+        <h3> Kids Colection</h3>
+
+        <div class="row">
+          {% for d in kids_data %}
+          <div class="col-3">
+            <div class="card p-3" style="width: 18rem">
+              <a href="{% url 'display_products' d.product_catagory %}"
+                ><img
+                  src="{{d.catagory_image.url}}"
+                  class="card-img-top rounded-circle"
+                  alt="No Image"
+                  height="300px"
+              /></a>
+              <div class="card-body">
+                <a
+                  href="{% url 'display_products' d.product_catagory %}"
+                  class="text-decoration-none text-dark"
+                >
+                  <h4 class="card-text text-center">{{d.product_catagory}}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+
+      <!-- others category display -->
+
+      {% if other_data %}
+      <div id="other_collection" class="pt-5">
+        <h3> Other Colection</h3>
+
+        <div class="row">
+          {% for d in other_data %}
+          <div class="col-3">
+            <div class="card p-3" style="width: 18rem">
+              <a href="{% url 'display_products' d.product_catagory %}"
+                ><img
+                  src="{{d.catagory_image.url}}"
+                  class="card-img-top rounded-circle"
+                  alt="No Image"
+                  height="300px"
+              /></a>
+              <div class="card-body">
+                <a
+                  href="{% url 'display_products' d.product_catagory %}"
+                  class="text-decoration-none text-dark"
+                >
+                  <h4 class="card-text text-center">{{d.product_catagory}}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+
+
+
+    </div>
+  </div>
+</body>
+{% endblock body %}

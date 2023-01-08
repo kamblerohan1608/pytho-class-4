@@ -1,0 +1,126 @@
+{% extends 'oneapp/base.html' %}
+
+
+
+{% block css %}
+<style>
+    h2 {
+        margin: 30px;
+        font-family: cursive;
+        text-shadow: 1px 2px 2px;
+        text-decoration:underline;
+        
+
+    }
+    h3,h4,h5{
+        margin-bottom: 20px;
+        font-family: cursive;
+        font-weight: lighter;
+        
+    }
+
+    .card {
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .card img {
+        width: 100%;
+        transition: 0.5s ease-in-out;
+    }
+
+    .card:hover img {
+        transform: scale(1.15);
+    
+    }
+
+</style>
+{% endblock css %}
+
+
+
+{% block body %}
+
+<body class="cointainer" style="background-color: #e9e9ef;">
+
+    <div class="mb-5">
+
+
+        <!-- heading -->
+        <div class="cointainer">
+            <h2 class="text-center">Men's Collection</h2>
+        </div>
+
+
+        <div class="cointainer">
+
+            <div class="row">
+
+                <div class="col-3 mb-5">
+
+                    <h4 class="text-center">Filters</h4>
+
+                    <div class="mb-5">
+                        <label for="customRange1" class="form-label"><h5>Price Filter</h5></label>
+                        <input type="range" id="slider" class="form-range" id="customRange1" min="500" max="5000" value="1000" onchange="">
+                        <span id="price_amount">Price : </span>
+                    </div>
+                    <div class="mb-5">
+                        <label for="Brand select" class="form-label"><h5>Brand Filter</h5></label>
+                        <select class="form-select" aria-label="Default select example" name="Brand select">
+                            <option selected>Select Brand</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="Size select" class="form-label"><h5>Size Filter</h5></label>
+                        <select class="form-select" aria-label="Default select example" name="Size select">
+                            <option selected>Select Size</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                    </div>
+
+                </div>
+
+                <div class="col-9">
+                    <!-- <h5>Products Here</h5> -->
+
+                    <div class="row">
+                        {% for d in data %}
+                        <div class="col-4 mb-3 ">
+                            <div class="card border-none p-3 shadow" id="card" style="width: 16rem;">
+                                <a href="{% url 'view_product' d.id %}" class="text-decoration-none text-dark">
+                                    <img src="{{d.p_image.url}}" class="card-img-top" alt="No Image"
+                                        height="270px" class="rounded ">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{d.p_brand}}</h5>
+                                        <p class="card-text">{{d.p_name}}</p>
+                                        <h5>₹.{{d.p_price}}</h5>
+                                        <p class="card-text"></p>
+                                        <div class="text-center"><a href="{% url 'view_product' d.id %}" class="btn btn-primary">View Product</a></div>
+                                        
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+  
+
+        </div>
+
+
+
+    </div>
+
+</body>
+{% endblock body %}
